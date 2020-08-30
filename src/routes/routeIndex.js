@@ -6,9 +6,9 @@ import {
   Redirect,
 } from "react-router-dom";
 
-import Position from '../pages/position';
-import TradeList from '../pages/tradeList';
-import Transfer from '../pages/transfer';
+
+import Performance from '@/pages/performance';
+import './index.less';
 
 export default function App() {
   return (
@@ -17,16 +17,10 @@ export default function App() {
         {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
         <Switch>
-          <Route path="/position">
-            <Position />
+          <Route path="/performance">
+            <Performance />
           </Route>
-          <Route path="/trade">
-            <TradeList />
-          </Route>
-          <Route path="/transfer">
-            <Transfer />
-          </Route>
-          <Redirect to="/position" />
+          <Redirect to="/performance" />
           {/* <Route path="/">
             <Home />
           </Route> */}
