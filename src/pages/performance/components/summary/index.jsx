@@ -1,6 +1,6 @@
 import React from "react";
 import { Table } from "antd";
-import ColorMoney from '@/components/colorMoney';
+import ColorMoney from "@/components/colorMoney";
 import "./index.less";
 
 function PerformanceSummary(props) {
@@ -14,19 +14,19 @@ function PerformanceSummary(props) {
       title: "年化收益率",
       dataIndex: "year_return_rate",
       key: "year_return_rate",
-      render: text => <ColorMoney value={text} type='percent' />
+      render: (text) => <ColorMoney value={text} type="percent" />,
     },
     {
       title: "累计盈亏",
       dataIndex: "total_profit",
       key: "total_profit",
-      render: text => <ColorMoney value={text} type='num' />
+      render: (text) => <ColorMoney value={text} type="num" />,
     },
     {
       title: "累计收益率",
       dataIndex: "total_profit_rate",
       key: "total_profit_rate",
-      render: text => <ColorMoney value={text} type='percent' />
+      render: (text) => <ColorMoney value={text} type="percent" />,
     },
     {
       title: "市值",
@@ -50,21 +50,41 @@ function PerformanceSummary(props) {
     },
   ];
   const summaryData = props.summaryData;
-  const data = [
-    {
-      ...summaryData,
-      total_asset: summaryData.total_asset.toFixed(2),
-      total_value: summaryData.total_value.toFixed(2),
-      cash: summaryData.cash.toFixed(2),
-      total_principle: summaryData.total_principle.toFixed(2),
-      total_interest: summaryData.total_interest.toFixed(2),
-      key: 1,
-    },
-  ];
+  let data = [{
+    total_asset: '--',
+    total_value: '--',
+    cash: '--',
+    total_principle: '--',
+    total_interest: '--',
+    year_return_rate: '--',
+    total_profit: '--',
+    total_profit_rate: '--',
+    key: 1,
+  }];
+  if(summaryData) {
+    data = [
+      {
+        ...summaryData,
+        total_asset: summaryData.total_asset.toFixed(2),
+        total_value: summaryData.total_value.toFixed(2),
+        cash: summaryData.cash.toFixed(2),
+        total_principle: summaryData.total_principle.toFixed(2),
+        total_interest: summaryData.total_interest.toFixed(2),
+        key: 1,
+      },
+    ];
+  }
+
 
   return (
     <div className="perf-summary">
-      <Table columns={columns} dataSource={data} pagination={false} bordered={true}/>
+      <Table
+        columns={columns}
+        dataSource={data}
+        pagination={false}
+        bordered={true}
+        loading={props.loading}
+      />
     </div>
   );
 }

@@ -10,7 +10,9 @@ function ColorMoney(props) {
   } = props
 
   let displayValue = value;
-  if(type === 'num') {
+  if(value === '--') {
+    displayValue = value;
+  } else if(type === 'num') {
     displayValue = value.toFixed(2);
   } else if(type === 'percent') {
     displayValue = `${(value * 100).toFixed(2)}%`;
