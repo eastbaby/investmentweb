@@ -3,6 +3,10 @@ import { Table, Switch } from "antd";
 import ColorMoney from "@/components/colorMoney";
 import "./index.less";
 
+const numSorter = (dataIndex) => {
+  return (a, b) => parseFloat(a[dataIndex]) - parseFloat(b[dataIndex]);
+};
+
 function PerformancePosition(props) {
   const [onlyShowHold, setOnlyShowHold] = useState(true);
 
@@ -21,50 +25,65 @@ function PerformancePosition(props) {
       title: "现价",
       dataIndex: "current_price",
       key: "current_price",
-      sorter: (a, b) => a.current_price - b.current_price,
+      sorter: numSorter("current_price"),
     },
     {
       title: "市值",
       dataIndex: "current_value",
       key: "current_value",
-      sorter: (a, b) => a.current_price - b.current_price,
+      sorter: numSorter("current_value"),
     },
     {
       title: "持仓",
       dataIndex: "current_num",
       key: "current_num",
+      sorter: numSorter("current_num"),
     },
     {
       title: "单位成本",
       dataIndex: "average_cost",
       key: "average_cost",
+      sorter: numSorter("average_cost"),
     },
     {
       title: "总成本",
       dataIndex: "total_cost",
       key: "total_cost",
+      sorter: numSorter("total_cost"),
     },
     {
       title: "盈亏",
       dataIndex: "profit",
       key: "profit",
       render: (text) => <ColorMoney value={text} type="num" />,
+      sorter: numSorter("profit"),
     },
     {
       title: "盈亏率",
       dataIndex: "profit_rate",
       key: "profit_rate",
       render: (text) => <ColorMoney value={text} type="percent" />,
+      sorter: numSorter("profit_rate"),
     },
     {
       title: "年化收益率",
       dataIndex: "year_return_rate",
       key: "year_return_rate",
       render: (text) => <ColorMoney value={text} type="percent" />,
+      sorter: numSorter("year_return_rate"),
+    },
+    {
+      title: "占比",
+      dataIndex: "percentage",
+      key: "percentage",
+      sorter: numSorter("percentage"),
     },
   ];
   const positionData = props.positionData || [];
-  const allData = positionData.map((item, index) => {
+  const sortedPositionData = positionData.sort((a, b) => {
+    return b.percentage - a.percentage;
+  });
+  const allData = sortedPositionData.map((item, index) => {
     return {
       ...item,
       key: index + 1,
@@ -92,7 +111,7 @@ function PerformancePosition(props) {
     <div className="perf-position">
       <div className="perf-position-action">
         <Switch defaultChecked onClick={onChange} />
-        <div>仅显示持仓</div>
+        <div className="perf-position-action-label">仅显示持仓</div>
       </div>
       <Table
         size="small"

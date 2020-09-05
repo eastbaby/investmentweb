@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { Tabs } from "antd";
 import Summary from "./components/summary";
 import Position from "./components/position";
+import Trades from "./components/trades";
+import Transfers from "./components/transfers";
 
 import { getPerfGroupList, getPerfGroupPositions } from "@/api";
 import "./index.less";
@@ -71,10 +73,10 @@ function Performance() {
                 />
               </TabPane>
               <TabPane tab="交易记录" key="trade">
-                Content of Tab Pane 2
+                <Trades currentGroupId={currentGroupId} />
               </TabPane>
               <TabPane tab="转账记录" key="transfer">
-                Content of Tab Pane 3
+                <Transfers currentGroupId={currentGroupId} />
               </TabPane>
             </Tabs>
           </TabPane>
