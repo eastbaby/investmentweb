@@ -41,6 +41,7 @@ function PerformanceTrades(props) {
       dataIndex: "time",
       key: "time",
       sorter: (a, b) => b.time - a.time,
+      render: (time) => <span>{moment(time, "YYYYMMDDHHmmss").format('YYYY-MM-DD HH:mm:ss')}</span>,
     },
     {
       title: "成交价",
@@ -78,7 +79,6 @@ function PerformanceTrades(props) {
       price: item.price.toFixed(3),
       amount: item.amount.toFixed(2),
       fee: item.amount.toFixed(2),
-      time: moment(item.time, "YYYYMMDDHHmmss").format('YYYY-MM-DD HH:mm:ss'),
     };
   });
 

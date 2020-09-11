@@ -36,6 +36,7 @@ function PerformanceTranfers(props) {
       dataIndex: "time",
       key: "time",
       sorter: (a, b) => b.time - a.time,
+      render: (time) => <span>{moment(time, "YYYYMMDDHHmmss").format('YYYY-MM-DD HH:mm:ss')}</span>,
     },
     {
       title: "备注",
@@ -51,7 +52,6 @@ function PerformanceTranfers(props) {
       ...item,
       key: index + 1,
       amount: item.amount.toFixed(2),
-      time: moment(item.time, "YYYYMMDDHHmmss").format('YYYY-MM-DD HH:mm:ss'),
     };
   });
 
