@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Table } from "antd";
+import moment from "moment";
 import { getPerfGroupTrades } from "@/api";
 import "./index.less";
 
@@ -77,6 +78,7 @@ function PerformanceTrades(props) {
       price: item.price.toFixed(3),
       amount: item.amount.toFixed(2),
       fee: item.amount.toFixed(2),
+      time: moment(item.time, "YYYYMMDDHHmmss").format('YYYY-MM-DD HH:mm:ss'),
     };
   });
 

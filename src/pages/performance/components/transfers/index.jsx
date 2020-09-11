@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Table } from "antd";
+import moment from "moment";
 import { getPerfGroupTransfers } from "@/api";
 import "./index.less";
 
@@ -50,6 +51,7 @@ function PerformanceTranfers(props) {
       ...item,
       key: index + 1,
       amount: item.amount.toFixed(2),
+      time: moment(item.time, "YYYYMMDDHHmmss").format('YYYY-MM-DD HH:mm:ss'),
     };
   });
 
