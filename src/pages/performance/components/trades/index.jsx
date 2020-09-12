@@ -18,7 +18,7 @@ function PerformanceTrades(props) {
       setLoading(false);
     };
     fetchData();
-  }, []);
+  }, [props.currentGroupId]);
 
   const columns = [
     {

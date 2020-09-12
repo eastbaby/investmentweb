@@ -14,7 +14,6 @@ export async function request(url, params = {}, method = "post", options = {}) {
     }
 
     const response = await axios(config);
-    console.log('response', response);
     const { data, error } = handleResponse(response);
     if (error) {
       throw error;

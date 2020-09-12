@@ -20,10 +20,19 @@ function Performance() {
   useEffect(() => {
     const fetchData = async () => {
       const result = await getPerfGroupList();
-      setMainGroups(result.content);
       if (result.content && result.content.length > 0) {
         setCurrentGroupId(result.content[0].group_id);
       }
+      setMainGroups([
+        ...result.content,
+        {
+          create_time: '',
+          modified_time: '',
+          group_id: '',
+          id: 0,
+          name: '汇总',
+        },
+      ]);
     };
     fetchData();
   }, []);
@@ -37,10 +46,10 @@ function Performance() {
       setPositionData(result.content);
       setLoading(false);
     };
-    if (currentGroupId) {
+    if (mainGroups && mainGroups.length > 0) {
       fetchData();
     }
-  }, [currentGroupId]);
+  }, [mainGroups, currentGroupId]);
 
   function handleChangeTab(key) {
     console.log("currentGroupId", key);
