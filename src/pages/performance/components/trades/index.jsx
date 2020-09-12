@@ -78,7 +78,7 @@ function PerformanceTrades(props) {
       key: index + 1,
       price: item.price.toFixed(3),
       amount: item.amount.toFixed(2),
-      fee: item.amount.toFixed(2),
+      fee: item.fee.toFixed(2),
     };
   });
 
