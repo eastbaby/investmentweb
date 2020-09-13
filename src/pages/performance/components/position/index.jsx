@@ -28,6 +28,27 @@ function PerformancePosition(props) {
       sorter: numSorter("current_price"),
     },
     {
+      title: "涨跌",
+      dataIndex: "change",
+      key: "change",
+      render: (text) => <ColorMoney value={text} type="num" />,
+      sorter: numSorter("change"),
+    },
+    {
+      title: "涨跌幅",
+      dataIndex: "change_rate",
+      key: "change_rate",
+      render: (text) => <ColorMoney value={text} type="percent" />,
+      sorter: numSorter("change_rate"),
+    },
+    {
+      title: "当日盈亏",
+      dataIndex: "daily_profit",
+      key: "daily_profit",
+      render: (text) => <ColorMoney value={text} type="num" />,
+      sorter: numSorter("daily_profit"),
+    },
+    {
       title: "市值",
       dataIndex: "current_value",
       key: "current_value",

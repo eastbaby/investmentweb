@@ -11,6 +11,18 @@ function PerformanceSummary(props) {
       key: "total_asset",
     },
     {
+      title: "当日盈亏",
+      dataIndex: "total_daily_profit",
+      key: "total_daily_profit",
+      render: (text) => <ColorMoney value={text} type="num" />,
+    },
+    {
+      title: "当日盈亏率",
+      dataIndex: "total_daily_profit_rate",
+      key: "total_daily_profit_rate",
+      render: (text) => <ColorMoney value={text} type="percent" />,
+    },
+    {
       title: "年化收益率",
       dataIndex: "year_return_rate",
       key: "year_return_rate",
@@ -48,10 +60,17 @@ function PerformanceSummary(props) {
       key: "total_interest",
       dataIndex: "total_interest",
     },
+    {
+      title: "其他收入",
+      key: "total_other_income",
+      dataIndex: "total_other_income",
+    },
   ];
   const summaryData = props.summaryData;
   let data = [{
     total_asset: '--',
+    total_daily_profit: '--',
+    total_daily_profit_rate: '--',
     total_value: '--',
     cash: '--',
     total_principle: '--',
@@ -59,6 +78,7 @@ function PerformanceSummary(props) {
     year_return_rate: '--',
     total_profit: '--',
     total_profit_rate: '--',
+    total_other_income: '--',
     key: 1,
   }];
   if(summaryData) {
@@ -70,6 +90,7 @@ function PerformanceSummary(props) {
         cash: summaryData.cash.toFixed(2),
         total_principle: summaryData.total_principle.toFixed(2),
         total_interest: summaryData.total_interest.toFixed(2),
+        total_other_income: summaryData.total_other_income.toFixed(2),
         key: 1,
       },
     ];
