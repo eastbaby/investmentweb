@@ -42,7 +42,7 @@ function PerformancePosition(props) {
       sorter: numSorter("change_rate"),
     },
     {
-      title: "当日盈亏",
+      title: "当日收益",
       dataIndex: "daily_profit",
       key: "daily_profit",
       render: (text) => <ColorMoney value={text} type="num" />,
@@ -73,14 +73,14 @@ function PerformancePosition(props) {
       sorter: numSorter("total_cost"),
     },
     {
-      title: "盈亏",
+      title: "收益",
       dataIndex: "profit",
       key: "profit",
       render: (text) => <ColorMoney value={text} type="num" />,
       sorter: numSorter("profit"),
     },
     {
-      title: "盈亏率",
+      title: "收益率",
       dataIndex: "profit_rate",
       key: "profit_rate",
       render: (text) => <ColorMoney value={text} type="percent" />,

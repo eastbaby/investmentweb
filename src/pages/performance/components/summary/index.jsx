@@ -11,25 +11,19 @@ function PerformanceSummary(props) {
       key: "total_asset",
     },
     {
-      title: "当日盈亏",
+      title: "当日收益",
       dataIndex: "total_daily_profit",
       key: "total_daily_profit",
       render: (text) => <ColorMoney value={text} type="num" />,
     },
     {
-      title: "当日盈亏率",
+      title: "当日收益率",
       dataIndex: "total_daily_profit_rate",
       key: "total_daily_profit_rate",
       render: (text) => <ColorMoney value={text} type="percent" />,
     },
     {
-      title: "年化收益率",
-      dataIndex: "year_return_rate",
-      key: "year_return_rate",
-      render: (text) => <ColorMoney value={text} type="percent" />,
-    },
-    {
-      title: "累计盈亏",
+      title: "累计收益",
       dataIndex: "total_profit",
       key: "total_profit",
       render: (text) => <ColorMoney value={text} type="num" />,
@@ -38,6 +32,12 @@ function PerformanceSummary(props) {
       title: "累计收益率",
       dataIndex: "total_profit_rate",
       key: "total_profit_rate",
+      render: (text) => <ColorMoney value={text} type="percent" />,
+    },
+    {
+      title: "年化收益率",
+      dataIndex: "year_return_rate",
+      key: "year_return_rate",
       render: (text) => <ColorMoney value={text} type="percent" />,
     },
     {
