@@ -5,7 +5,7 @@ export function getPerfGroupList() {
 }
 
 export function getPerfGroupPositions(params) {
-  return request('/api/performance/group_positions', params, 'post', { timeout: 10000 });
+  return request('/api/performance/group_positions', params, 'post', { timeout: 30000 });
 }
 
 export function getPerfGroupTrades(params) {
