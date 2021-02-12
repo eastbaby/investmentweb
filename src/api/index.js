@@ -15,3 +15,7 @@ export function getPerfGroupTrades(params) {
 export function getPerfGroupTransfers(params) {
   return request('/api/performance/group_transfers', params);
 }
+
+export function getPerfGroupSummaries(params) {
+  return request('/api/performance/group_summaries', params);
+}

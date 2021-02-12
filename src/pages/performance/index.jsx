@@ -4,6 +4,7 @@ import Summary from "./components/summary";
 import Position from "./components/position";
 import Trades from "./components/trades";
 import Transfers from "./components/transfers";
+import YearlySum from "./components/yearlysum";
 
 import { getPerfGroupList, getPerfGroupPositions } from "@/api";
 import "./index.less";
@@ -86,6 +87,9 @@ function Performance() {
               </TabPane>
               <TabPane tab="转账记录" key="transfer">
                 <Transfers currentGroupId={currentGroupId} />
+              </TabPane>
+              <TabPane tab="历年收益" key="yearlysum">
+                <YearlySum currentGroupId={currentGroupId} />
               </TabPane>
             </Tabs>
           </TabPane>
