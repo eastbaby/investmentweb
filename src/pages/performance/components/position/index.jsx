@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Table, Switch } from "antd";
 import ColorMoney from "@/components/colorMoney";
+import PureTrades from "../pureTrades";
 import "./index.less";
 
 const numSorter = (dataIndex) => {
@@ -141,6 +142,9 @@ function PerformancePosition(props) {
         pagination={false}
         bordered={true}
         loading={props.loading}
+        expandable={{
+          expandedRowRender: record => <div className="nested-table-wrapper"><PureTrades listData={record.history_trades} loading={false} bordered={false}/></div>
+        }}
       />
     </div>
   );
