@@ -64,6 +64,11 @@ function PerformanceTrades(props) {
       key: "fee",
     },
     {
+      title: "利息",
+      dataIndex: "interest",
+      key: "interest",
+    },
+    {
       title: "备注",
       dataIndex: "comment",
       key: "comment",
@@ -79,6 +84,7 @@ function PerformanceTrades(props) {
       price: item.price.toFixed(3),
       amount: item.amount.toFixed(2),
       fee: item.fee.toFixed(2),
+      interest: item.interest.toFixed(2)
     };
   });
 
