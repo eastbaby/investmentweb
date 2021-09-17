@@ -65,6 +65,11 @@ function PureTrades(props) {
       dataIndex: "comment",
       key: "comment",
     },
+    {
+      title: "标识",
+      dataIndex: "identifier",
+      key: "identifier",
+    },
   ];
   const sortedData = listData.sort((a, b) => {
     return b.time - a.time;
