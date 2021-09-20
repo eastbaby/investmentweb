@@ -1,7 +1,8 @@
-import React from "react";
-import { Table } from "antd";
+import React, { useState } from "react";
+import { Table, Button } from "antd";
 import moment from "moment";
 import "./index.less";
+import { useEffect } from "react";
 
 
 function PureTrades(props) {
@@ -10,7 +11,23 @@ function PureTrades(props) {
     loading,
     bordered = true,
     size = 'small',
+    clearHighlight = false,
   } = props;
+
+  const [currentHighlightIds, setCurrentHighlightIds] = useState([]);
+
+  const handleHighlight = (value, record) => {
+    // eslint-disable-next-line no-eval
+    const hightlightList = eval(record.highlight) || [];
+    setCurrentHighlightIds([...hightlightList, value]);
+  };
+
+  useEffect(() => {
+    if(clearHighlight) {
+      setCurrentHighlightIds([]);
+    }
+  }, [clearHighlight]);
+
 
   const columns = [
     {
@@ -74,6 +91,9 @@ function PureTrades(props) {
       title: "标识",
       dataIndex: "identifier",
       key: "identifier",
+      render: (value, record) => (
+        <Button type="link" onClick={() => handleHighlight(value, record)}>{value}</Button>
+      ),
     },
     {
       title: "对应",
@@ -87,7 +107,7 @@ function PureTrades(props) {
   const data = sortedData.map((item, index) => {
     return {
       ...item,
-      key: index + 1,
+      key: item.identifier,
       price: item.price.toFixed(3),
       amount: item.amount.toFixed(2),
       profit: item.profit.toFixed(2),
@@ -96,14 +116,24 @@ function PureTrades(props) {
     };
   });
 
+  const handleRowClassname = (record, index) => {
+    if(currentHighlightIds.includes(record.identifier)) {
+      return 'highlight-row';
+    } else {
+      return '';
+    }
+  };
+
   return (
     <Table
-        size={size}
-        columns={columns}
-        dataSource={data}
-        pagination={false}
-        bordered={bordered}
-        loading={loading}
+      className="pure-trade-table"
+      size={size}
+      columns={columns}
+      dataSource={data}
+      pagination={false}
+      bordered={bordered}
+      loading={loading}
+      rowClassName={handleRowClassname}
     />
   );
 }

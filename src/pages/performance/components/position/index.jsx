@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Table, Switch } from "antd";
+import { Table, Switch, Button } from "antd";
 import ColorMoney from "@/components/colorMoney";
 import PureTrades from "../pureTrades";
 import "./index.less";
@@ -10,6 +10,7 @@ const numSorter = (dataIndex) => {
 
 function PerformancePosition(props) {
   const [onlyShowHold, setOnlyShowHold] = useState(true);
+  const [clearHighlight, setClearHighlight] = useState(false);
 
   const columns = [
     {
@@ -134,6 +135,7 @@ function PerformancePosition(props) {
       <div className="perf-position-action">
         <Switch defaultChecked onClick={onChange} />
         <div className="perf-position-action-label">仅显示持仓</div>
+        <Button style={{marginLeft: '20px'}} type="primary" shape="round" size="small" onClick={() => setClearHighlight(true)}>高亮重置</Button>
       </div>
       <Table
         size="small"
@@ -143,7 +145,11 @@ function PerformancePosition(props) {
         bordered={true}
         loading={props.loading}
         expandable={{
-          expandedRowRender: record => <div className="nested-table-wrapper"><PureTrades listData={record.history_trades} loading={false} bordered={false}/></div>
+          expandedRowRender: record => (
+            <div className="nested-table-wrapper">
+              <PureTrades listData={record.history_trades} loading={false} bordered={false} clearHighlight={clearHighlight}/>
+            </div>
+          )
         }}
       />
     </div>
