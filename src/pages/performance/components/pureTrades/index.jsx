@@ -91,7 +91,7 @@ function PureTrades(props) {
       dataIndex: "identifier",
       key: "identifier",
       render: (value, record) => (
-        <Button type="link" onClick={() => handleHighlight(value, record)}>{value}</Button>
+        <a onClick={() => handleHighlight(value, record)}>{value}</a>
       ),
     },
     {
