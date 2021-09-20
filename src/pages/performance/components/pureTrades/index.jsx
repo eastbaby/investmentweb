@@ -61,6 +61,11 @@ function PureTrades(props) {
       key: "interest",
     },
     {
+      title: "实现盈利",
+      dataIndex: "profit",
+      key: "profit",
+    },
+    {
       title: "备注",
       dataIndex: "comment",
       key: "comment",
@@ -69,6 +74,11 @@ function PureTrades(props) {
       title: "标识",
       dataIndex: "identifier",
       key: "identifier",
+    },
+    {
+      title: "对应",
+      dataIndex: "corresponding",
+      key: "corresponding",
     },
   ];
   const sortedData = listData.sort((a, b) => {
@@ -80,6 +90,7 @@ function PureTrades(props) {
       key: index + 1,
       price: item.price.toFixed(3),
       amount: item.amount.toFixed(2),
+      profit: item.profit.toFixed(2),
       fee: item.fee.toFixed(2),
       interest: item.interest.toFixed(2)
     };
