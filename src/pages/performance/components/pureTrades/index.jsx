@@ -1,8 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useImperativeHandle } from "react";
 import { Table, Button } from "antd";
 import moment from "moment";
 import "./index.less";
-import { useEffect } from "react";
 
 
 function PureTrades(props) {
@@ -11,7 +10,7 @@ function PureTrades(props) {
     loading,
     bordered = true,
     size = 'small',
-    clearHighlight = false,
+    onRef,
   } = props;
 
   const [currentHighlightIds, setCurrentHighlightIds] = useState([]);
@@ -19,15 +18,15 @@ function PureTrades(props) {
   const handleHighlight = (value, record) => {
     // eslint-disable-next-line no-eval
     const hightlightList = eval(record.highlight) || [];
-    setCurrentHighlightIds([...hightlightList, value]);
+    setCurrentHighlightIds(prev => [...prev, ...hightlightList, value]);
   };
 
-  useEffect(() => {
-    if(clearHighlight) {
+  useImperativeHandle(onRef, () => ({
+    // clearHighlight 就是暴露给父组件的方法
+    clearHighlight: () => {
       setCurrentHighlightIds([]);
     }
-  }, [clearHighlight]);
-
+  }));
 
   const columns = [
     {
