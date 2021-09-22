@@ -75,11 +75,32 @@ function PerformancePosition(props) {
       sorter: numSorter("total_cost"),
     },
     {
-      title: "收益",
+      title: "总收益",
       dataIndex: "profit",
       key: "profit",
       render: (text) => <ColorMoney value={text} type="num" />,
       sorter: numSorter("profit"),
+    },
+    {
+      title: "交易收益",
+      dataIndex: "profit_trade",
+      key: "profit_trade",
+      render: (text) => <ColorMoney value={text} type="num" />,
+      sorter: numSorter("profit_trade"),
+    },
+    {
+      title: "分红收益",
+      dataIndex: "profit_dividend",
+      key: "profit_dividend",
+      render: (text) => <ColorMoney value={text} type="num" />,
+      sorter: numSorter("profit_dividend"),
+    },
+    {
+      title: "融资收益",
+      dataIndex: "profit_finance",
+      key: "profit_finance",
+      render: (text) => <ColorMoney value={text} type="num" />,
+      sorter: numSorter("profit_finance"),
     },
     {
       title: "收益率",
