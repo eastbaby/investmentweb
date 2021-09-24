@@ -1,5 +1,5 @@
 import React, { useState, useImperativeHandle } from "react";
-import { Table, Button } from "antd";
+import { Table, Tooltip } from "antd";
 import moment from "moment";
 import "./index.less";
 
@@ -98,6 +98,11 @@ function PureTrades(props) {
       title: "对应",
       dataIndex: "corresponding",
       key: "corresponding",
+      render: value => (
+        <Tooltip placement="left" title={value}>
+          <div className="ellipsis">{value}</div>
+        </Tooltip>
+      )
     },
   ];
   const sortedData = listData.sort((a, b) => {
