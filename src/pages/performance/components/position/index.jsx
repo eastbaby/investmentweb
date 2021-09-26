@@ -63,7 +63,7 @@ function PerformancePosition(props) {
       sorter: numSorter("current_num"),
     },
     {
-      title: "单位成本",
+      title: "成本",
       dataIndex: "average_cost",
       key: "average_cost",
       sorter: numSorter("average_cost"),
@@ -73,6 +73,12 @@ function PerformancePosition(props) {
       dataIndex: "total_cost",
       key: "total_cost",
       sorter: numSorter("total_cost"),
+    },
+    {
+      title: "融成本",
+      dataIndex: "average_finance_cost",
+      key: "average_finance_cost",
+      sorter: numSorter("average_finance_cost"),
     },
     {
       title: "总收益",
@@ -110,7 +116,7 @@ function PerformancePosition(props) {
       sorter: numSorter("profit_rate"),
     },
     {
-      title: "年化收益率",
+      title: "年化",
       dataIndex: "year_return_rate",
       key: "year_return_rate",
       render: (text) => <ColorMoney value={text} type="percent" />,
@@ -132,6 +138,7 @@ function PerformancePosition(props) {
       ...item,
       key: index + 1,
       average_cost: item.average_cost ? item.average_cost.toFixed(2) : "--",
+      average_finance_cost: item.average_finance_cost ? item.average_finance_cost.toFixed(2) : "--",
       current_price: item.current_price.toFixed(3),
       current_value: item.current_value.toFixed(2),
       percentage: `${(item.percentage * 100).toFixed(2)}%`,
