@@ -163,7 +163,8 @@ function PerformancePosition(props) {
       <div className="perf-position-action">
         <Switch defaultChecked onClick={onChange} />
         <div className="perf-position-action-label">仅显示持仓</div>
-        <Button style={{marginLeft: '20px'}} type="primary" shape="round" size="small" onClick={() => pureTradesRef.current.clearHighlight()}>高亮重置</Button>
+        <Button style={{marginLeft: '20px'}} type="primary" shape="round" size="small" onClick={() => pureTradesRef.current.clearHighlight()}>清除高亮</Button>
+        <Button style={{marginLeft: '20px'}} type="primary" shape="round" size="small" onClick={() => pureTradesRef.current.highlightSale()}>高亮卖出</Button>
       </div>
       <Table
         size="small"

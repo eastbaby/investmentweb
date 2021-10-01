@@ -16,7 +16,7 @@ function PureTrades(props) {
   const [currentHighlightIds, setCurrentHighlightIds] = useState([]);
 
   const handleHighlight = (value, record) => {
-    // eslint-disable-next-line no-eval
+    // eslint-disable-next-line
     const hightlightList = eval(record.highlight) || [];
     setCurrentHighlightIds(prev => [...prev, ...hightlightList, value]);
   };
@@ -25,6 +25,15 @@ function PureTrades(props) {
     // clearHighlight 就是暴露给父组件的方法
     clearHighlight: () => {
       setCurrentHighlightIds([]);
+    },
+    highlightSale: () => {
+      const allSaleRecords = listData.filter(item => item.type === '卖出');
+      const ids = allSaleRecords.reduce((prev, record) => {
+        // eslint-disable-next-line
+        const hightlightList = eval(record.highlight) || [];
+        return [...prev, ...hightlightList, record.identifier];
+      }, [])
+      setCurrentHighlightIds(ids);
     }
   }));
 
@@ -91,6 +100,7 @@ function PureTrades(props) {
       dataIndex: "identifier",
       key: "identifier",
       render: (value, record) => (
+        // eslint-disable-next-line
         <a onClick={() => handleHighlight(value, record)}>{value}</a>
       ),
     },

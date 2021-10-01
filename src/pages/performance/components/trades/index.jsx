@@ -24,7 +24,7 @@ function PerformanceTrades(props) {
   return (
     <div className="perf-trades">
       <div className="perf-trades-action">
-        <Button type="primary" shape="round" size="small" onClick={() => pureTradesRef.current.clearHighlight()}>高亮重置</Button>
+        <Button type="primary" shape="round" size="small" onClick={() => pureTradesRef.current.clearHighlight()}>清除高亮</Button>
       </div>
       <PureTrades listData={listData} loading={loading} onRef={pureTradesRef}/>
     </div>
