@@ -26,13 +26,13 @@ function Performance() {
       }
       setMainGroups([
         ...result.content,
-        {
-          create_time: '',
-          modified_time: '',
-          group_id: '',
-          id: 0,
-          name: '汇总',
-        },
+        // {
+        //   create_time: '',
+        //   modified_time: '',
+        //   group_id: '',
+        //   id: 0,
+        //   name: '汇总',
+        // },
       ]);
     };
     fetchData();
