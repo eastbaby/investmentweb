@@ -76,7 +76,7 @@ function PureTrades(props) {
       key: "amount",
     },
     {
-      title: "手续费",
+      title: "费用",
       dataIndex: "fee",
       key: "fee",
     },
